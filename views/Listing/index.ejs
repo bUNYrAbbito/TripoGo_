@@ -1,0 +1,193 @@
+<%- layout("layouts/boilerplate") %> 
+
+<div class="container mt-4">
+  <!-- Filter categories -->
+  <div class="d-flex flex-nowrap overflow-auto mb-4 pb-2 border-bottom gap-3">
+   <div class="text-center px-3 py-2 rounded hover-effect active-category">
+  <i class="bi bi-water fs-4 d-block text-primary"></i>
+  <small class="fw-semibold d-block">Amazing pools</small>
+</div>
+
+<div class="text-center px-3 py-2 rounded hover-effect">
+  <i class="bi bi-tree fs-4 d-block text-success"></i>
+  <small class="text-muted d-block">Farms</small>
+</div>
+
+<div class="text-center px-3 py-2 rounded hover-effect">
+  <i class="bi bi-camera fs-4 d-block text-danger"></i>
+  <small class="text-muted d-block">Amazing views</small>
+</div>
+
+<div class="text-center px-3 py-2 rounded hover-effect active-category">
+  <i class="bi bi-water fs-4 d-block text-primary"></i>
+  <small class="fw-semibold d-block">Amazing pools</small>
+</div>
+
+<div class="text-center px-3 py-2 rounded hover-effect">
+  <i class="bi bi-tree fs-4 d-block text-success"></i>
+  <small class="text-muted d-block">Farms</small>
+</div>
+
+<div class="text-center px-3 py-2 rounded hover-effect">
+  <i class="bi bi-camera fs-4 d-block text-danger"></i>
+  <small class="text-muted d-block">Amazing views</small>
+</div>
+
+
+    <!-- Add more categories as needed -->
+  </div>
+</div>
+
+
+<div class="container py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+    <div>
+        <h2 class="fw-bold text-primary mb-0">
+            <i class="bi bi-compass-fill me-2"></i>Explore Destinations
+        </h2>
+        <p class="text-muted small mb-0 mt-1">Discover amazing places for your next adventure</p>
+    </div>
+    <a href="/listing/new" class="btn btn-success px-3 px-md-4 py-2">
+        <i class="bi bi-plus-lg me-1"></i> 
+        <span class="d-none d-sm-inline">Add New</span> Listing
+    </a>
+</div>
+
+  <div class="row g-4">
+    <% if (allListings.length === 0) { %>
+      <div class="col-12 text-center py-5">
+        <div class="alert alert-info">
+          <i class="bi bi-info-circle-fill"></i> No listings available yet. Be the first to add one!
+        </div>
+      </div>
+    <% } %>
+
+    <% for (let listing of allListings) { %>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="card h-100 listing-card">
+          <!-- Image with fallback -->
+          <div class="card-img-container">
+            <img 
+              src="<%= listing.image.url || '/images/default-listing.jpg' %>" 
+              class="card-img-top" 
+              alt="<%= listing.title %>"
+              onerror="this.src='/images/default-listing.jpg'">
+          </div>
+          
+          <div class="card-body d-flex flex-column">
+            <div class="mb-2">
+              <span class="badge bg-warning text-dark">
+                <i class="bi bi-star-fill"></i> <%= listing.rating || 'New' %>
+              </span>
+            </div>
+            
+            <h5 class="card-title fw-bold"><%= listing.title %></h5>
+            
+            <p class="card-text text-muted flex-grow-1">
+              <%= listing.description.substring(0, 100) %><%= listing.description.length > 100 ? '...' : '' %>
+            </p>
+            
+            <div class="d-flex justify-content-between align-items-end mt-3">
+              <div>
+                <p class="h5 text-success mb-0">
+                  ₹<%= new Intl.NumberFormat('en-IN').format(listing.price) %>
+                  <span class="text-muted small">/night</span>
+                </p>
+                <p class="small text-muted mb-0">
+                  <i class="bi bi-geo-alt"></i> <%= listing.location %>, <%= listing.country %>
+                </p>
+              </div>
+              
+              <a href="/listing/<%= listing._id%>/show" class="btn btn-outline-primary">
+                View <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+  .listing-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-container {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+  
+  .listing-card:hover .card-img-top {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .card-img-container {
+      height: 180px;
+    }
+  }
+
+ /* Hover Effect */
+.hover-effect {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hover-effect:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Active Category Style */
+.active-category {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background for active categories */
+  border: 2px solid #0d6efd; /* Blue border */
+}
+
+/* Optional: You can also add specific icon hover effects */
+.text-center i:hover {
+  color: #0d6efd; /* Change icon color to blue on hover */
+}
+
+
+
+  .hover-effect {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .hover-effect:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .active-category {
+    background-color: #e9f5ff;
+    border: 1px solid #b6e0fe;
+  }
+
+  @media (max-width: 576px) {
+    .hover-effect small {
+      font-size: 0.75rem;
+    }
+  }
+</style>

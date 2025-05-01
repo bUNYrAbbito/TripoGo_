@@ -1,0 +1,119 @@
+<%- layout("layouts/boilerplate") %> 
+<body>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Edit Your Listing</h3>
+            <p class="mb-0 small">Update your listing details below</p>
+          </div>
+          
+          <div class="card-body p-4">
+            <form method="POST" action="/listing/<%= listing._id %>?_method=put" class="needs-validation"
+            enctype="multipart/form-data" novalidate>
+              
+              <div class="mb-4">
+                <label for="title" class="form-label fw-bold">Listing Title</label>
+                <input id="title" name="listing[title]" type="text" 
+                       class="form-control form-control-lg" 
+                       value="<%= listing.title %>" required />
+                <div class="invalid-feedback">
+                  Please provide a title for your listing
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="description" class="form-label fw-bold">Description</label>
+                <textarea id="description" name="listing[description]" 
+                          class="form-control" rows="5" required><%= listing.description %></textarea>
+                <div class="invalid-feedback">
+                  Please provide a description
+                </div>
+                <small class="text-muted">Describe what makes your listing special</small>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="price" class="form-label fw-bold">Price</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input id="price" name="listing[price]" type="number" 
+                           class="form-control" value="<%= listing.price %>" required />
+                    <div class="invalid-feedback">
+                      Please provide a valid price
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="country" class="form-label fw-bold">Country</label>
+                  <input id="country" name="listing[country]" type="text" 
+                         class="form-control" value="<%= listing.country %>" required />
+                  <div class="invalid-feedback">
+                    Please provide a country
+                  </div>
+                </div>
+              </div>
+
+        <div class="col-md-6">
+  <label for="imageUpload" class="form-label fw-bold">Upload Image</label>
+  <input id="imageUpload" name="listing[image]" type="file"
+         class="form-control" accept="image/*" required />
+  <div class="invalid-feedback">
+    Please upload an image
+  </div>
+  <div class="mt-2" id="image-preview">
+    <% if (listing.image && listing.image.url) { %>
+      <img src="<%= listing.image.url %>" alt="Uploaded Image" class="img-fluid rounded" style="max-height: 200px;">
+    <% } else { %>
+      <i class="fas fa-image fa-3x text-muted"></i>
+    <% } %>
+  </div>
+</div>
+
+
+              <div class="mb-4">
+                <label for="location" class="form-label fw-bold">Location</label>
+                <input id="location" name="listing[location]" type="text" 
+                       class="form-control" value="<%= listing.location %>" required />
+                <div class="invalid-feedback">
+                  Please provide a location
+                </div>
+                <small class="text-muted">City, street, or specific location</small>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                <a href="/listing/<%= listing._id %>" class="btn btn-outline-secondary me-md-2">
+                  Cancel
+                </a>
+                <button type="submit" class="btn btn-primary px-4">
+                  <i class="bi bi-check-circle-fill me-2"></i>Update Listing
+                </button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Enhanced client-side validation
+    (function() {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', function(event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>

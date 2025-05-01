@@ -1,0 +1,310 @@
+
+.navbar{
+    height:5erm;
+    background-color: rgb(255, 1, 1);
+}
+.listing-details {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.listing-info {
+    flex: 1;
+    max-width: 60%;
+}
+
+.listing-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.listing-info li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.listing-image {
+    flex: 1;
+    max-width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listing-image img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-edit {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.btn-delete {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* General Styling */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.edit-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+/* Image Styling */
+.listing-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 350px;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .details-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .listing-info {
+        max-width: 100%;
+    }
+
+    .listing-image {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .edit-form {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+    }
+
+    .listing-details {
+        padding: 10px;
+    }
+
+    .listing-info li {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        height: auto;
+        padding: 10px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .listing-image img {
+        max-height: 200px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .edit-form {
+        padding: 10px;
+    }
+
+    .form-control {
+        padding: 8px;
+    }
+
+    .btn-block {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Tablet Devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .details-container {
+        gap: 15px;
+    }
+
+    .listing-info {
+        max-width: 55%;
+    }
+
+    .listing-image {
+        max-width: 40%;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1025px) {
+    .listing-details {
+        max-width: 1200px;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.listing-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+  
+.logo{
+        position: fixed;
+        top: 10px; 
+        left: 20px;
+        mix-blend-mode: multiply; 
+      }
+
+
+
+      .review-list {
+        list-style: none;
+        padding: 0;
+      }
+      .review-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+      }
+      .star {
+        color: #ccc;
+        font-size: 1.2rem;
+      }
+      .star.filled {
+        color: gold;
+      }
+
+
+      .rating-stars {
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+      
+      .star {
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      
+      .star.filled {
+        color: gold;
+      }
+      
+      .rating-value {
+        font-size: 1rem;
+        color: #666;
+        vertical-align: middle;
+      }
+      
+      /* For the range input labels */
+      .d-flex.justify-content-between {
+        width: 100%;
+        padding: 0 10px;
+        margin-top: -8px;
+      }

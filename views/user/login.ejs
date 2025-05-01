@@ -1,0 +1,85 @@
+<%- layout("layouts/boilerplate") %>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+      <div class="text-center mb-4">
+        <h2 class="text-primary">TripoGo</h2>
+        <p class="text-muted">Your journey begins here</p>
+      </div>
+      
+      <form action="/login" method="POST" class="needs-validation shadow p-4 bg-white rounded-3" novalidate>
+        <h3 class="text-center mb-4">Login to your account</h3>
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+          <div class="invalid-feedback">Please provide a username.</div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="invalid-feedback">Please provide a password.</div>
+          <div class="text-end mt-2">
+            <a href="#" class="text-decoration-none small">Forgot password?</a>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+          <i class="bi bi-box-arrow-in-right me-2"></i>Log In
+        </button>
+        
+        <div class="text-center">
+          <p class="mb-0">Don't have an account? <a href="/signup" class="text-decoration-none">Sign up</a></p>
+        </div>
+      </form>
+
+      <div class="text-center mt-4">
+       
+        <hr class="my-3">
+        <h6 class="text-muted">TRAVEL DEALS</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Validation Script -->
+<script>
+  (function () {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+</script>

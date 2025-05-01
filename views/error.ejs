@@ -1,0 +1,38 @@
+<%- layout("layouts/boilerplate") %>
+
+<style>
+  .error-3d {
+    text-shadow: 2px 2px 0 #ccc, 4px 4px 0 #999;
+    font-size: 6rem;
+    font-weight: bold;
+    color: #dc3545;
+  }
+
+  .bounce {
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .centered-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+</style>
+
+<div class="container centered-container text-center">
+  <div class="error-3d bounce"><%= statusCode %></div>
+  <h2 class="mt-4 text-danger"><%= message || 'Page Not Found' %></h2>
+  <p class="lead">The page you're looking for doesn't exist or was moved.</p>
+  <a href="/listing" class="btn btn-outline-danger mt-3">Go Back Home</a>
+</div>
