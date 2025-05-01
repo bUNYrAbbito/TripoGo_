@@ -42,7 +42,6 @@ app.use(methodOverride("_method"));
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.ATLAS_URL, {
-      useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 10000, // Timeout after 10 seconds
     });

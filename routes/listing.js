@@ -1,7 +1,6 @@
 // Import required modules
 const express = require("express");
 const router = express.Router();
-const Listing = require("../models/listing");
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../Error/error");
 const { listingSchema } = require("../joi");
